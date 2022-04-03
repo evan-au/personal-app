@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "personal-app": "apps/personal-app",
+    "personal-app-e2e": "apps/personal-app-e2e"
+  }
+}
