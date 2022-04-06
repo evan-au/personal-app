@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { timer, map, repeat, take, Observable } from 'rxjs';
+import { timer, map, repeat, take, Observable, startWith } from 'rxjs';
 import * as THREE from 'three';
 
 @UntilDestroy({ checkProperties: true })
@@ -26,6 +26,7 @@ export class TerrainCanvasComponent implements OnInit {
 
   ngOnInit(): void {
     this.color$ = timer(0, 100).pipe(
+      startWith(1),
       take(360),
       map((time) => {
         return `hsl(${time}, 50%, 50%)`;
