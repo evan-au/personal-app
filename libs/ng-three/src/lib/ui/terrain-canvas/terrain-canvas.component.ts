@@ -20,9 +20,9 @@ export class TerrainCanvasComponent implements OnInit {
   color$!: Observable<string>;
 
   loader = new THREE.TextureLoader();
-  texture = this.loader.load('assets/texture-4.jpg');
+  texture = this.loader.load('assets/texture.jpg');
   height = this.loader.load('assets/height.png');
-  alpha = this.loader.load('assets/alpha-2.png');
+  alpha = this.loader.load('assets/alpha.png');
 
   ngOnInit(): void {
     this.color$ = timer(0, 100).pipe(
