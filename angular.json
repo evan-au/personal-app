@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "ng-three": "libs/ng-three",
-    "personal-app": "apps/personal-app",
-    "personal-app-e2e": "apps/personal-app-e2e"
+    "personal-app": "apps/personal-app"
   }
 }

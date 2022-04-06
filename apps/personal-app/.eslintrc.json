@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "personalApp",
+            "prefix": "ditalFlyer",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "personal-app",
+            "prefix": "digital-flyer",
             "style": "kebab-case"
           }
         ]

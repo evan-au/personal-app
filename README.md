@@ -1,7 +1,7 @@
-## Personal flyer
+## Digital flyer
 
-Welcome to my personal flyer.
+Welcome to my digital flyer.
 
 A page to reach me.
 
-[Live demo](https://evan-pierrelouis.web.app)
+[Digiflyer link](https://evan-pierrelouis.web.app)
