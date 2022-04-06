@@ -4,9 +4,11 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { timer, map, repeat, take, Observable } from 'rxjs';
 import * as THREE from 'three';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'ng-three-terrain-canvas',
   templateUrl: './terrain-canvas.component.html',

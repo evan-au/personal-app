@@ -10,12 +10,14 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 import gsap from 'gsap';
 import { Observable } from 'rxjs';
 import Swiper, { Autoplay, SwiperOptions } from 'swiper';
 import { Object3D } from 'three';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'ng-three-slider',
   templateUrl: './slider.component.html',

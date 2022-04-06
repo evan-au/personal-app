@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, Observable, repeat, take, timer } from 'rxjs';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import * as THREE from 'three';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'ng-three-particles',
   templateUrl: './particles.component.html',

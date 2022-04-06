@@ -5,10 +5,12 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import * as THREE from 'three';
 import { Object3D } from 'three';
 import { generateRandomNumbers } from '../../utils/helpers/random-numbers';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'ng-three-snowflakes-canvas',
   templateUrl: './snowflakes-canvas.component.html',

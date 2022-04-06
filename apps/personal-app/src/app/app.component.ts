@@ -13,7 +13,9 @@ import { gsap } from 'gsap';
 import TextPlugin from 'gsap/TextPlugin';
 import { EasePack } from 'gsap/all';
 import { Object3D } from 'three';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'personal-app-root',
   templateUrl: './app.component.html',
