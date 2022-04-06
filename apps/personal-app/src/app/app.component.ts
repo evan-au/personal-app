@@ -25,7 +25,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('main', { static: true }) main!: ElementRef<HTMLElement>;
   @ViewChild('name', { static: true }) name!: ElementRef<HTMLElement>;
-  @ViewChild('greet', { static: true }) greet!: ElementRef<HTMLElement>;
+  @ViewChild('intro', { static: true }) intro!: ElementRef<HTMLElement>;
   @ViewChild('last', { static: true }) last!: ElementRef<HTMLElement>;
 
   words$: Observable<string[]> = of([
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     'lived on an island!',
   ]);
 
-  greetingsTimeline = gsap.timeline().pause();
+  introTimeline = gsap.timeline().pause();
   textTimeline = gsap.timeline({ repeat: -1 }).pause();
   cursorTimeline = gsap.timeline().pause();
 
@@ -124,7 +124,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   animateContent() {
-    this.greetingsTimeline
+    this.introTimeline
       .to('.flicker', {
         duration: 2,
         autoAlpha: 0.1,
@@ -139,7 +139,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           clamp: false,
         }),
       })
-      .from(this.greet.nativeElement, {
+      .from(this.intro.nativeElement, {
         duration: 1,
         x: -300,
         ease: 'sine.in',
@@ -192,7 +192,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       opacity: 0,
       ease: 'sine.in',
       onComplete: () => {
-        this.greetingsTimeline.play();
+        this.introTimeline.play();
       },
     });
 
