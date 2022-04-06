@@ -1,0 +1,23 @@
+<main #canvas>
+  <swiper
+    [config]="config"
+    class="w-full h-full bg-e-com-secondary-variant bg-opacity-10"
+  >
+    <ng-template swiperSlide>
+      <section class="h-screen">
+        <ng-three-terrain-canvas
+          [inputDisplacementScale]="inputDisplacementScale$ | async"
+        ></ng-three-terrain-canvas>
+      </section>
+    </ng-template>
+    <ng-template swiperSlide>
+      <section class="h-screen">
+        <ng-three-snowflakes-canvas
+          [inputCameraPositionX]="inputCameraPositionX"
+          [inputCameraPositionY]="inputCameraPositionY"
+          (outputMoveCamera)="moveCamera($event)"
+        ></ng-three-snowflakes-canvas>
+      </section>
+    </ng-template>
+  </swiper>
+</main>

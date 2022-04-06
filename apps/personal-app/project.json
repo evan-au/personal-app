@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/personal-app",
         "index": "apps/personal-app/src/index.html",
@@ -18,7 +20,9 @@
           "apps/personal-app/src/favicon.ico",
           "apps/personal-app/src/assets"
         ],
-        "styles": ["apps/personal-app/src/styles.scss"],
+        "styles": [
+          "apps/personal-app/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,10 +87,22 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/personal-app"],
+      "outputs": [
+        "coverage/apps/personal-app"
+      ],
       "options": {
         "jestConfig": "apps/personal-app/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "personal-app:build:production",
+        "firebaseProject": "evan-pierrelouis",
+        "firebaseHostingSite": "evan-pierrelouis"
       }
     }
   },

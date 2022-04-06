@@ -1,0 +1,28 @@
+<!-- <section class="h-screen"> -->
+<ngt-canvas [camera]="{ position: [0, 2, 10], fov: 15 }">
+  <ngt-mesh [rotation]="[181, 0, 0]" (animateReady)="onAnimate($event.object)">
+    <ngt-plane-geometry [args]="[4, 4, 64, 64]"></ngt-plane-geometry>
+    <ng-container *ngIf="inputDisplacementScale as displacementScale">
+      <ngt-mesh-standard-material
+        [parameters]="{
+          color: 'gray',
+          map: texture,
+          displacementMap: height,
+          displacementScale: displacementScale,
+          alphaMap: alpha,
+          transparent: true,
+          depthTest: false
+        }"
+      ></ngt-mesh-standard-material>
+    </ng-container>
+  </ngt-mesh>
+  <ng-container *ngIf="color$ | async as color">
+    <ngt-ambient-light [color]="color" [intensity]="10"></ngt-ambient-light>
+    <ngt-point-light
+      [intensity]="10"
+      [position]="[10, 6, 10]"
+      [color]="color"
+    ></ngt-point-light>
+  </ng-container>
+</ngt-canvas>
+<!-- </section> -->

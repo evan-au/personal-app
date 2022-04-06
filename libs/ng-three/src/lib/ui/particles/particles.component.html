@@ -1,0 +1,20 @@
+<ngt-points>
+  <ngt-buffer-geometry>
+    <ngt-float32-buffer-attribute
+      [attach]="'position'"
+      [args]="[vertices, 3]"
+    ></ngt-float32-buffer-attribute>
+  </ngt-buffer-geometry>
+  <ng-container *ngIf="color$ | async as color">
+    <ngt-points-material
+      [parameters]="{
+        size: 25,
+        sizeAttenuation: true,
+        map: disc,
+        alphaTest: 0.5,
+        transparent: false,
+        color: color | color
+      }"
+    ></ngt-points-material>
+  </ng-container>
+</ngt-points>

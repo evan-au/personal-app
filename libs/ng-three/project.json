@@ -1,0 +1,47 @@
+{
+  "projectType": "library",
+  "root": "libs/ng-three",
+  "sourceRoot": "libs/ng-three/src",
+  "prefix": "personal-app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": [
+        "dist/libs/ng-three"
+      ],
+      "options": {
+        "project": "libs/ng-three/ng-package.json",
+        "tailwindConfig": "libs/ng-three/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ng-three/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ng-three/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/ng-three"
+      ],
+      "options": {
+        "jestConfig": "libs/ng-three/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ng-three/src/**/*.ts",
+          "libs/ng-three/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

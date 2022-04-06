@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "evan-pierrelouis": {
+      "hosting": {
+        "personal-app": [
+          "evan-pierrelouis"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "evan-pierrelouis"
+  }
+}
