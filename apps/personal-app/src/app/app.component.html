@@ -69,9 +69,6 @@
     <ng-container *ngIf="!isViewOnMobile; else showMobileVersion">
       <ng-container *ngIf="displacementScale$ | async as displacementScale">
         <ng-three-slider
-          [inputCameraPositionX]="cameraPositionX"
-          [inputCameraPositionY]="cameraPositionY"
-          (outputMoveCamera)="moveCamera($event)"
           [inputDisplacementScale$]="displacementScale$"
         ></ng-three-slider>
       </ng-container>
@@ -82,41 +79,34 @@
 <ng-template #showMobileVersion>
   <ng-container *ngIf="noDisplacementScale$ | async as noDisplacementScale">
     <ng-three-slider
-      [inputCameraPositionX]="cameraPositionX"
-      [inputCameraPositionY]="cameraPositionY"
-      (outputMoveCamera)="moveCamera($event)"
       [inputDisplacementScale$]="noDisplacementScale$"
     ></ng-three-slider>
   </ng-container>
-  <!-- </section> -->
 </ng-template>
 <ng-template #showMobileIcons>
-  <div class="flex gap-10">
+  <div class="flex gap-12">
     <a
-      class="link"
+      class="link mobile-link"
       title="Personal Github"
       href="https://github.com/evan-pl"
       target="_blank"
       rel="noopener noreferrer"
-      mat-icon-button
     >
       <i class="fa-brands fa-github fa-xl text-purple-400"></i>
     </a>
     <a
-      class="link"
+      class="link mobile-link"
       target="_blank"
       rel="noopener noreferrer"
       href="tel:+48513993161"
-      mat-icon-button
     >
       <i class="fa-solid fa-mobile-screen fa-xl text-purple-400"></i>
     </a>
     <a
-      class="link"
+      class="link mobile-link"
       target="_blank"
       rel="noopener noreferrer"
       href="mailto:evan.pierrelouis@gmail.com"
-      mat-icon-button
     >
       <i class="fa-solid fa-paper-plane fa-xl text-purple-400"></i>
     </a>

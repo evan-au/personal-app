@@ -12,10 +12,7 @@ import { gsap } from 'gsap';
 
 import TextPlugin from 'gsap/TextPlugin';
 import { EasePack } from 'gsap/all';
-import { Object3D } from 'three';
-import { UntilDestroy } from '@ngneat/until-destroy';
 
-@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'digital-flyer',
   templateUrl: './app.component.html',
@@ -28,7 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('intro', { static: true }) intro!: ElementRef<HTMLElement>;
   @ViewChild('last', { static: true }) last!: ElementRef<HTMLElement>;
 
-  words$: Observable<string[]> = of([
+  sentences$: Observable<string[]> = of([
     'Angular frontend developer.',
     'Elf | NgRx',
     'Supabase | Firebase',
@@ -41,12 +38,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   textTimeline = gsap.timeline({ repeat: -1 }).pause();
   cursorTimeline = gsap.timeline().pause();
 
-  cameraPositionX$!: Observable<number>;
-  cameraPositionY$!: Observable<number>;
-
-  cameraPositionX = 0;
-  cameraPositionY = 0;
-
   isViewOnMobile!: boolean;
   activateRed = false;
 
@@ -56,8 +47,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     gsap.registerPlugin(TextPlugin, EasePack);
     this.animateContent();
-
-    this.noDisplacementScale$ = of(-0.5);
 
     const displacementScaleMouseXEvents$ = fromEvent(
       this.main.nativeElement,
@@ -72,35 +61,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       })
     );
 
-    const particlesMouseXEvents$ = fromEvent(
-      this.main.nativeElement,
-      'mousemove'
-    ).pipe(
-      map((event) => {
-        const windowHalfY = window.innerHeight / 2;
-        const { clientY } = event as MouseEvent;
-        const mouseY = (clientY / windowHalfY) * 2 - 1;
-
-        this.cameraPositionX = mouseY / 2;
-        return mouseY / 2;
-      })
-    );
-    const particlesMouseYEvents$ = fromEvent(
-      this.main.nativeElement,
-      'mousemove'
-    ).pipe(
-      map((event) => {
-        const windowHalfX = window.innerWidth / 2;
-        const { clientX } = event as MouseEvent;
-        const mouseX = (clientX / windowHalfX) * 2 - 1;
-
-        this.cameraPositionY = -mouseX / 2;
-        return -mouseX / 2;
-      })
-    );
-
-    this.cameraPositionX$ = particlesMouseXEvents$;
-    this.cameraPositionY$ = particlesMouseYEvents$;
+    this.noDisplacementScale$ = of(-0.5);
     this.displacementScale$ = displacementScaleMouseXEvents$;
   }
 
@@ -112,11 +73,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       ease: 'power3.inOut',
       x: 100,
     });
-
-    if (!this.isViewOnMobile) {
-      this.cameraPositionX$.subscribe();
-      this.cameraPositionY$.subscribe();
-    }
   }
 
   isBreakpointMatching(payload: boolean) {
@@ -165,10 +121,10 @@ export class AppComponent implements OnInit, AfterViewInit {
         repeat: -1,
       });
 
-    this.words$
+    this.sentences$
       .pipe(
-        map((words) =>
-          words.map((word) => {
+        map((sentences) =>
+          sentences.map((sentence) => {
             const timeline = gsap.timeline({
               repeat: 1,
               yoyo: true,
@@ -177,8 +133,9 @@ export class AppComponent implements OnInit, AfterViewInit {
             });
             timeline.to('.text', {
               duration: 3,
-              text: word,
+              text: sentence,
             });
+
             this.textTimeline.add(timeline);
           })
         )
@@ -202,14 +159,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       opacity: 0,
       ease: 'sine.in',
       x: -100,
-    });
-  }
-
-  moveCamera(object: Object3D) {
-    gsap.to(object.rotation, {
-      x: this.cameraPositionX,
-      y: this.cameraPositionY,
-      duration: 0.8,
     });
   }
 }
