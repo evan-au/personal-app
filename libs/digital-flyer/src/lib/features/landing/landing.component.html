@@ -1,1 +1,114 @@
-<p>Landing works!</p>
+<main
+  #main
+  class="relative bg-black w-full text-white h-screen flex flex-col"
+  ngThreeBreakpointCheckMobile
+  (outputIsBreakpointMatchingMobile)="isBreakpointMatching($event)"
+>
+  <section class="grid grid-rows-[30%_55%_15%] h-full z-10">
+    <div class="flex flex-col items-center justify-center gap-4">
+      <h1 #name class="text-5xl lg:text-6xl font-display flicker">
+        Hi, I'm Evan
+      </h1>
+      <h2 #intro class="text-lg lg:text-3xl">
+        <span class="text"></span>
+        <span class="cursor inline-block">_</span>
+      </h2>
+    </div>
+    <div class="spacer"></div>
+    <div #last class="flex flex-col gap-4 items-center justify-center">
+      <div
+        *ngIf="!isViewOnMobile; else showMobileIcons"
+        class="flex flex-col gap-2 items-center lg:flex-row lg:justify-center lg:gap-8"
+      >
+        <a
+          title="Personal Github"
+          href="https://github.com/evan-pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link hover:bg-teal-400 hover:bg-opacity-20 duration-500 transition-colors rounded-full py-2 px-4"
+        >
+          <i class="fa-brands fa-github text-purple-400"></i> |
+          <span>Github</span></a
+        >
+        <a
+          class="link hover:bg-teal-400 hover:bg-opacity-20 duration-500 transition-colors rounded-full py-2 px-4"
+          title="Email address"
+          href="mailto:evan.pierrelouis.dev@gmail.com"
+        >
+          <i class="fa-solid fa-paper-plane text-purple-400"></i> |
+          <span>evan.pierrelouis.dev@gmail.com</span></a
+        >
+        <a
+          class="link hover:bg-teal-400 hover:bg-opacity-20 duration-500 transition-colors rounded-full py-2 px-4"
+          title="Phone number"
+          href="tel:+48513993161"
+        >
+          <i class="fa-solid fa-mobile-screen text-purple-400"></i> |
+          <span>+48 513 993 161</span></a
+        >
+      </div>
+      <div
+        title="Place of Residence"
+        class="link flex items-center gap-2"
+        (mouseover)="activateRed = true"
+        (mouseleave)="activateRed = false"
+      >
+        <i class="fa-solid fa-couch fa-xs"></i>|<span class="text-sm"
+          >Polska,
+          <span
+            [ngClass]="{
+              'text-red-500 transition-colors duration-1000': activateRed
+            }"
+            >Gdańsk</span
+          >
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="absolute w-full h-full z-0">
+    <ng-container *ngIf="!isViewOnMobile; else showMobileVersion">
+      <ng-container *ngIf="displacementScale$ | async as displacementScale">
+        <ng-three-slider
+          [inputDisplacementScale$]="displacementScale$"
+        ></ng-three-slider>
+      </ng-container>
+    </ng-container>
+  </section>
+</main>
+
+<ng-template #showMobileVersion>
+  <ng-container *ngIf="noDisplacementScale$ | async as noDisplacementScale">
+    <ng-three-slider
+      [inputDisplacementScale$]="noDisplacementScale$"
+    ></ng-three-slider>
+  </ng-container>
+</ng-template>
+<ng-template #showMobileIcons>
+  <div class="flex gap-12">
+    <a
+      class="link mobile-link"
+      title="Personal Github"
+      href="https://github.com/evan-pl"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa-brands fa-github fa-xl text-purple-400"></i>
+    </a>
+    <a
+      class="link mobile-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      href="tel:+48513993161"
+    >
+      <i class="fa-solid fa-mobile-screen fa-xl text-purple-400"></i>
+    </a>
+    <a
+      class="link mobile-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      href="mailto:evan.pierrelouis@gmail.com"
+    >
+      <i class="fa-solid fa-paper-plane fa-xl text-purple-400"></i>
+    </a>
+  </div>
+</ng-template>

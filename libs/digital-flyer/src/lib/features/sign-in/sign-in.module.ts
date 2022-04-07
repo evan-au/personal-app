@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [SignInComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class SignInModule {}
