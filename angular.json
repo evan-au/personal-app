@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "digital-flyer": "libs/digital-flyer",
     "ng-three": "libs/ng-three",
     "personal-app": "apps/personal-app",
     "supabase": "libs/supabase"

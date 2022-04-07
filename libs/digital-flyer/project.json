@@ -1,31 +1,31 @@
 {
   "projectType": "library",
-  "root": "libs/supabase",
-  "sourceRoot": "libs/supabase/src",
+  "root": "libs/digital-flyer",
+  "sourceRoot": "libs/digital-flyer/src",
   "prefix": "personal-app",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:ng-packagr-lite",
-      "outputs": ["dist/libs/supabase"],
+      "outputs": ["dist/libs/digital-flyer"],
       "options": {
-        "project": "libs/supabase/ng-package.json",
-        "tailwindConfig": "libs/supabase/tailwind.config.js"
+        "project": "libs/digital-flyer/ng-package.json",
+        "tailwindConfig": "libs/digital-flyer/tailwind.config.js"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/supabase/tsconfig.lib.prod.json"
+          "tsConfig": "libs/digital-flyer/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/supabase/tsconfig.lib.json"
+          "tsConfig": "libs/digital-flyer/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/supabase"],
+      "outputs": ["coverage/libs/digital-flyer"],
       "options": {
-        "jestConfig": "libs/supabase/jest.config.js",
+        "jestConfig": "libs/digital-flyer/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -33,8 +33,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/supabase/src/**/*.ts",
-          "libs/supabase/src/**/*.html"
+          "libs/digital-flyer/src/**/*.ts",
+          "libs/digital-flyer/src/**/*.html"
         ]
       }
     }

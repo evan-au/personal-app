@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@personal-app/digital-flyer": ["libs/digital-flyer/src/index.ts"],
       "@personal-app/ng-three": ["libs/ng-three/src/index.ts"],
       "@personal-app/supabase": ["libs/supabase/src/index.ts"]
     }
