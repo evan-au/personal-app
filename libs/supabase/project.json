@@ -1,0 +1,44 @@
+{
+  "projectType": "library",
+  "root": "libs/supabase",
+  "sourceRoot": "libs/supabase/src",
+  "prefix": "personal-app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/supabase"],
+      "options": {
+        "project": "libs/supabase/ng-package.json",
+        "tailwindConfig": "libs/supabase/tailwind.config.js"
+      },
+
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/supabase/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/supabase/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/supabase"],
+      "options": {
+        "jestConfig": "libs/supabase/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/supabase/src/**/*.ts",
+          "libs/supabase/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

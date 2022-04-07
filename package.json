@@ -25,6 +25,7 @@
     "@angular/router": "~13.2.0",
     "@ngneat/until-destroy": "^9.0.1",
     "@nrwl/angular": "13.9.6",
+    "@supabase/supabase-js": "^1.33.3",
     "firebase": "^9.6.10",
     "gsap": "^3.10.2",
     "rxjs": "~7.4.0",
